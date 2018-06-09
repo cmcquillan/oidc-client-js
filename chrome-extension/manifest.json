@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+  
+    "name": "Reproduce Chrome Extension Issue",
+    "description": "Reproduces an issue where messages sent by extensions cause silent sign-in failures.",
+    "version": "0.1",
+    "content_scripts": [
+        {
+            "run_at": "document_start",
+            "matches": ["http://*/*", "https://*/*"],
+            "js": ["content_frame.js"],
+            "all_frames": true
+        }
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    },
+    "permissions": [
+      "tabs",
+      "<all_urls>",
+      "storage"
+    ]
+  }
